@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App</title>
+    <!-- Corrected Bootstrap CDN URL -->
+    <link href="https://jsdelivr.net" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        /* Centers image and forces a uniform sizing aspect ratio */
+        .movie-img {
+            height: 350px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            align-self: center;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Header & Horizontal Search Navbar -->
+    <nav class="navbar navbar-dark bg-dark shadow-sm mb-4">
+        <div class="container justify-content-between">
+            <a class="navbar-brand fw-bold" href="#">🎬 Movie App</a>
+            
+            <!-- Horizontal Search Form -->
+            <form action="" class="d-flex align-items-center">
+                <div class="me-2">
+                    <input type="text" name="searchMovie" class="form-control form-control-sm" placeholder="Search for Movie..." />
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm text-nowrap">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Contextual Search Text -->
+        <div class="mb-4">
+            <span class="text-muted small">Searching for: </span>
+            <strong class="text-dark">{{ searchTerm }}</strong>
+        </div>
+
+        <!-- Horizontal Grid Loop for Movie Cards -->
+        <div class="row g-4">
+            {% for movie in movies %}
+            <div class="col-12 col-sm-6 col-md-4">
+                <!-- text-center utilities align text content and button structures to the middle -->
+                <div class="card h-100 shadow-sm text-center p-3">
+                    
+                    <!-- Centered Movie Image -->
+                    <img src="{{ movie.image.url }}" class="movie-img mb-3" alt="{{ movie.title }}">
+                    
+                    <!-- Movie Details Card Body -->
+                    <div class="card-body d-flex flex-column p-0">
+                        <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                        <p class="card-text text-muted small flex-grow-1 mx-auto" style="max-width: 90%;">{{ movie.description }}</p>
+                        
+                        {% if movie.url %}
+                        <div class="mt-auto pt-3">
+                            <a href="{{ movie.url }}" class="btn btn-outline-secondary btn-sm w-100">Movie Link</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Centered Newsletter Signup Section -->
+        <div class="row justify-content-center pb-5">
+            <div class="col-12 col-md-6">
+                <div class="card p-4 shadow-sm border-0 bg-white">
+                    <h4 class="fw-bold mb-3 text-center">Join our mailing list</h4>
+                    <form action="{% url 'signup' %}">
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-muted small">Enter your email:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
