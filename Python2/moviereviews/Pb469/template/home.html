@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Available Hotels</h2>
+<ul>
+    {% for hotel in hotels %}
+        <li>
+            <strong>{{ hotel.name }}</strong> - {{ hotel.location }}  
+            ₹{{ hotel.price_per_night }} per night  
+            <a href="{% url 'book_hotel' hotel.id %}">Book</a> | 
+            <a href="{% url 'reviews' hotel.id %}">Reviews</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
