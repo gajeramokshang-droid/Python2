@@ -1,0 +1,25 @@
+<form method="post">
+    {% csrf_token %}
+    <label>Name:</label>
+    <input type="text" name="name" required><br><br>
+
+    <label>Country:</label>
+    <input type="text" name="country" required><br><br>
+
+    <label>Age:</label>
+    <input type="number" name="age" required><br><br>
+
+    <label>Batting Style:</label>
+    <input type="text" name="batting" required><br><br>
+
+    <label>Bowling Style:</label>
+    <input type="text" name="bowling" required><br><br>
+
+    <label>Runs:</label>
+    <input type="number" name="runs" required><br><br>
+
+    <label>Wickets:</label>
+    <input type="number" name="wickets" required><br><br>
+
+    <button type="submit">Save Player</button>
+</form>

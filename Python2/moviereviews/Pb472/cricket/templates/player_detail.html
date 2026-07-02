@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ form.name }} - Details</title>
+</head>
+<body>
+    <h1>{{ form.name }}</h1>
+    <p><strong>Country:</strong> {{ form.country }}</p>
+    <p><strong>Batting Style:</strong> {{ form.batting }}</p>
+    <p><strong>Bowling Style:</strong> {{ form.bowling }}</p>
+    <p><strong>Age:</strong> {{ form.age }}</p>
+    <p><strong>Runs:</strong> {{ form.runs }}</p>
+    <p><strong>Wickets:</strong> {{ form.wickets }}</p>
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
